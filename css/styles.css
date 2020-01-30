@@ -24,3 +24,7 @@
 #output {
     display: none;
 }
+
+nav {
+    text-align: left;
+}
