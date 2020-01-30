@@ -44,12 +44,12 @@ $(document).ready(function(){
   });
 
   $("#roll").click(function() {
-    // console.log(playerOne);
+    
     var roll1 = playerOne.Roll();
-    // console.log(die);
-    // var re = [];
+    
+   
     playerOne.roll.push(roll1);
-    // console.log(roll);
+    
     $("#scoreOut").append(roll1 + ", ");
 
 
@@ -74,6 +74,16 @@ $(document).ready(function(){
     // if (playerOne.rolls() === 1){
     //   console.log("stop");
     // }
+  });
+  $("#roll").click(function() {
+    
+    var roll1 = playerTwo.Roll();
+    
+   
+    playerTwo.roll.push(roll1);
+    
+    $("#scoreOut3").append(roll1 + ", ");
+
   });
 
 });
