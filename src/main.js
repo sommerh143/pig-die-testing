@@ -6,8 +6,8 @@ import './styles.css';
 
 var total = 0;
 var total2 = 0;
-var playerOne = new Player(0, 0, [], 1);
-var playerTwo = new Player(0, 0, [], 0);
+var playerOne = new Player(0, 0, 1);
+var playerTwo = new Player(0, 0, 0);
 var currentplayer = 1;
 
 
@@ -22,7 +22,15 @@ $(document).ready(function () {
 
   $("#roll").click(function () {
     var x = (Math.floor(Math.random() * 6) + 1);
-    if (currentplayer === 1) {
+    if (x === 1) {
+      playerOne.temp_score = 0;
+      playerTwo.temp_score = 0;
+      if (currentplayer === 1) {
+        currentplayer = 0;
+      } else {
+        currentplayer = 1;
+      }
+    } else if (currentplayer === 1) {
       var roll1 = playerOne.Turn(x);
       $("#scoreOut").text("" + roll1);
     } else {
@@ -34,19 +42,20 @@ $(document).ready(function () {
 
   $("#hold").click(function () {
     if (currentplayer === 1) {
-      total += playerOne.Hold();
-      playerOne.Switch();
+      total = playerOne.Hold();
+      currentplayer = playerOne.Switch();
       if (total >= 100) {
         alert("You Win");
       }
-      $("#scoreTotal1").text("" + playerOne.tempArray[playerOne.tempArray.length - 1]);
+      playerOne.temp_score = 0;
+      $("#scoreTotal1").text("" + total);
     } else {
       total2 += playerTwo.Hold();
-      playerTwo.Switch();
+      currentplayer = playerTwo.Switch();
       if (total2 >= 100) {
         alert("You Win");
       }
-      $("#scoreTotal2").text("" + playerTwo.tempArray[playerTwo.tempArray.length - 1]);
+      playerTwo.temp_score = 0;
       $("#scoreTotal2").text(total2);
     }
   });

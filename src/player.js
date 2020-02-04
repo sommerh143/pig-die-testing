@@ -22,7 +22,8 @@ Player.prototype.Turn = function (x) {
 };
 
 Player.prototype.Hold = function () {
-  return this.score += this.temp_score; 
+  this.score += this.temp_score;
+  return this.score; 
 };
 
 Player.prototype.Switch = function () {
